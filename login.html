@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Register Panel</title>
+    <!-- Vuetify CSS and Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.5.10/dist/vuetify.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
+    <style>
+        /* CSS Styling */
+        .hardly-curvy-card { border-radius: 30px 0 30px 0 !important; }
+        .hardly-curvy-card-v2 { border-radius: 35px 0 35px 0 !important; }
+        
+        #app {
+            background: url("https://demos.creative-tim.com/material-kit/assets/img/bg7.jpg") no-repeat center center;
+            background-size: cover;
+        }
+
+        .filter { background: rgba(0, 0, 0, 0.35) !important; }
+
+        form {
+            background-color: transparent;
+            display: flex;
+            padding: 0;
+            height: 100%;
+            text-align: center;
+        }
+
+        .form-container {
+            position: absolute;
+            height: 100%;
+            transition: all 0.6s ease-in-out;
+        }
+
+        .sign-in-container { left: 0; width: 50%; z-index: 2; }
+        .sign-up-container { left: 0; width: 50%; opacity: 0; z-index: 1; }
+
+        .SignContainer.right-panel-active .sign-in-container { transform: translateX(0%); }
+        .SignContainer.right-panel-active .sign-up-container { transform: translateX(100%); opacity: 1; z-index: 5; animation: show 0.6s; }
+
+        @keyframes show {
+            0%, 49.99% { opacity: 0; z-index: 1; }
+            50%, 100% { opacity: 1; z-index: 5; }
+        }
+
+        .overlay-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: transform 0.6s ease-in-out;
+            z-index: 100;
+        }
+
+        .SignContainer.right-panel-active .overlay-container { transform: translateX(-100%); }
+
+        .overlay {
+            background: linear-gradient(to right, #675DA9, #4f67fe);
+            color: #FFFFFF;
+            position: relative;
+            left: -100%;
+            height: 100%;
+            width: 200%;
+            transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .SignContainer.right-panel-active .overlay { transform: translateX(50%); }
+
+        .overlay-panel {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 40px;
+            text-align: center;
+            top: 0;
+            height: 100%;
+            width: 50%;
+            transition: transform 0.6s ease-in-out;
+        }
+        form {
+    background: url("https://keystonemediahq.com/wp-content/uploads/2023/05/finance-animation-explained-keystone-media-videos-for-financial-advisors-financial-services-05-1024x688.jpg") no-repeat center center;
+    background-size: cover;
+    display: flex;
+    padding: 0;
+    height: 100%;
+    text-align: center;
+}
+#app::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Behind the content */
+    background: linear-gradient(270deg, #6a11cb, #2575fc, #4b6cb7, #182848);
+    background-size: 800% 800%;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+        .overlay-left { transform: translateX(-20%); }
+        .SignContainer.right-panel-active .overlay-left { transform: translateX(0); }
+
+        .overlay-right { right: 0; transform: translateX(0); }
+        .SignContainer.right-panel-active .overlay-right { transform: translateX(20%); }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <v-app id="inspire" class="filter">
+            <v-layout row justify-center align-center>
+                <v-container class="text-xs-center">
+                    <v-card width="1080px" max-width="100%" min-height="500px" elevation=18 id="container" 
+                            class="SignContainer hardly-curvy-card-v2" :class="{ 'right-panel-active': isActive }">
+                        <!-- Register Form -->
+                        <div class="form-container sign-up-container">
+                            <form action="#">
+                                <v-container grid-list-sm>
+                                    <h2>Register</h2>
+                                    <v-layout wrap justify-center align-center>
+                                        <v-flex xs12>
+                                            <v-text-field label="enter your name*" required></v-text-field>
+                                        </v-flex>
+                                        <v-flex xs12>
+                                            <v-text-field label="Email*" required></v-text-field>
+                                        </v-flex>
+                                        <v-flex xs12>
+                                            <v-text-field label="enter your password*" type="password" required></v-text-field>
+                                        </v-flex>
+                                        <v-flex xs12>
+                                            <v-text-field label="confirm your password*" type="password" required></v-text-field>
+                                        </v-flex>
+                                        <v-flex xs12>
+                                            <v-btn dark color="#675da9">Register</v-btn>
+                                        </v-flex>
+                                    </v-layout>
+                                </v-container>
+                            </form>
+                        </div>
+                        <!-- Login Form -->
+                        <div class="form-container sign-in-container">
+                            <form action="#">
+                                <v-container grid-list-sm>
+                                    <h2>Login</h2>
+                                    <v-layout wrap justify-center align-center>
+                                        <v-flex xs12>
+                                            <v-text-field label="Email*" required></v-text-field>
+                                        </v-flex>
+                                        <v-flex xs12>
+                                            <v-text-field label="enter your password*" type="password" required></v-text-field>
+                                        </v-flex>
+                                        <v-flex xs12>
+                                            <v-btn dark color="#675da9">Login</v-btn>
+                                        </v-flex>
+                                    </v-layout>
+                                </v-container>
+                            </form>
+                        </div>
+                        
+                        <!-- Overlay for Panel Switch -->
+                        <div class="overlay-container hardly-curvy-card">
+                            <div class="overlay">
+                                <div class="overlay-panel overlay-left">
+                                    <h1>Welcome</h1>
+                                    <p>To stay in touch with us, please log in.</p>
+                                    <v-btn outline small color="white" @click="switchPanel">
+                                        Login <v-icon size="22"></v-icon>
+                                    </v-btn>
+                                </div>
+                                <div class="overlay-panel overlay-right">
+                                    <h1>Hello,Friend</h1>
+                                    <p>If you are new, please create an account here.</p>
+                                    <v-btn outline small color="white" @click="switchPanel">
+                                        Check In <v-icon size="22"></v-icon>
+                                    </v-btn>
+                                </div>
+                            </div>
+                        </div>
+                    </v-card>
+                </v-container>
+            </v-layout>
+        </v-app>
+    </div>
+
+    <!-- Vue and Vuetify JS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.5.10/dist/vuetify.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            vuetify: new Vuetify(),
+            data: {
+                isActive: false
+            },
+            methods: {
+                switchPanel() {
+                    this.isActive = !this.isActive;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

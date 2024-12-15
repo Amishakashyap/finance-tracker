@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Tracker 💰</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: "Lato", sans-serif;
+            background-color: #f8f9fa;
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: #3a0d62;
+        }
+        .navbar-brand {
+            color: #f9f8f5 !important;
+            font-weight: bold;
+        }
+        .nav-link {
+            color: #fff !important;
+            transition: color 0.3s;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #00adef !important;
+        }
+
+        /* Header and Quote Box Styling */
+        #header {
+            min-height: 100vh;
+            background: linear-gradient(
+                rgba(58, 13, 98, 0.6),
+                rgba(58, 13, 98, 0.6)
+            ), url('https://img.freepik.com/premium-vector/business-graph-chart-investment-trading-blue-background_62391-236.jpg') center/cover no-repeat;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        #quoteBox {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 4rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            max-width: 700px;
+            animation: fadeIn 2s ease-out;
+        }
+        .quoteBlock {
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styling */
+        .textContainer {
+            background-color: #edf2f7;
+            padding: 5rem 1.5rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+            transition: all 1s;
+            text-align: justify;
+        }
+        .textContainer h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .columns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+        .column {
+            flex: 1 1 calc(33.333% - 1rem);
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .column:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .columnhead {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .column p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Footer Styling */
+        .footer {
+            background-color: #0b0945;
+            color: #f0f8fd;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        .footer ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        .footer ul li a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer ul li a:hover {
+            color: #00adef;
+        }
+        /* Updated Columns Styling */
+.columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center; /* Center align the columns */
+}
+.column {
+    flex: 0 0 300px; /* Set a fixed width */
+    height: 300px; /* Set a fixed height to make it square */
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center align content inside */
+}
+
+
+
+    /* Back to Top Button Styling */
+    .back-to-top {
+        display: none;
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: #3a0d62;
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 15px;
+        border-radius: 50px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        font-size: 20px;
+        transition: opacity 0.3s, visibility 0.3s;
+        z-index: 1000;
+    }
+    .back-to-top:hover {
+        background-color: #00adef;
+    }
+</style>
+
+    </style>
+</head>
+<body>
+    <a href="#header" id="backToTop" class="back-to-top">↑ Top</a>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Finance Tracker 💹</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#overview">Overview </a></li>
+                <li class="nav-item"><a class="nav-link" href="#insights">Insights </a></li>
+                <li class="nav-item"><a class="nav-link" href="#strategies">Strategies </a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Dashboard </a></li>
+                <!-- <li class="nav-item"><a class="nav-link" href="#">Register </a></li> -->
+                <li class="nav-item"><a class="nav-link highlight-btn" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login </a></li>
+                <li class="nav-item"><a class="nav-link" href="#">About  </a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Header with Quote Box -->
+<header id="header">
+    <div id="quoteBox">
+        <p class="quoteBlock">"Managing your finances is not just about dollars and cents; It's the road to freedom, with mindful expense. Track your savings, watch them grow, So your future self will thank you, more than you know." </p>
+    </div>
+</header>
+
+<!-- Overview Section -->
+<section id="overview" class="textContainer">
+    <h2>Why Financial Awareness Matters </h2>
+    <p>Managing personal finances effectively is essential for building a secure future. Understanding where your money goes, how to budget effectively, and what strategies can maximize your financial growth helps you stay ahead. </p>
+</section>
+
+<!-- Insights Section -->
+<section id="insights" class="textContainer">
+    <h2>Key Financial Insights 🔍</h2>
+    <div class="columns">
+        <div class="column">
+            <h3 class="columnhead">Understanding Budget Leaks 🚰</h3>
+            <p>Budget leaks occur when small, unnoticed expenses accumulate over time, diminishing your savings. Track these hidden costs using finance tools to keep your spending in check. </p>
+        </div>
+        <div class="column">
+            <h3 class="columnhead">Corporate Impact 📈</h3>
+            <p>Be aware of how large-scale businesses and economic policies can affect personal finance. From inflation to interest rates, these factors play a significant role in your financial strategy. </p>
+        </div>
+        <div class="column">
+            <h3 class="columnhead">Smart Saving Strategies 💡</h3>
+            <p>Invest in your future by understanding different savings vehicles, such as high-yield savings accounts and retirement plans. Being proactive helps secure long-term growth. </p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>Finance Tracker &copy; 2023 | All Rights Reserved ©️</p>
+    <ul>
+        <li><a href="#overview">Overview 📘</a></li>
+        <li><a href="#insights">Insights 💡</a></li>
+        <li><a href="#header">Back to Top ⬆️</a></li>
+    </ul>
+</footer>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Trigger animations when scrolling to sections
+    document.addEventListener("scroll", () => {
+        document.querySelectorAll(".textContainer").forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.9) {
+                section.classList.add("animate");
+            }
+        });
+    });
+      // Show the Back to Top button when the user scrolls down
+      window.addEventListener('scroll', function() {
+        const backToTop = document.getElementById('backToTop');
+        if (window.pageYOffset > 100) {
+            backToTop.style.display = 'block';
+        } else {
+            backToTop.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>
